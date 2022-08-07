@@ -23,7 +23,9 @@ export default function ContactUs() {
 				}}
 			>
 				<div>
-					<h1 style={{ textAlign: "left" }}>Contact Us</h1>
+					<h1 style={{ textAlign: "left", fontSize: 60, color: "#37474f" }}>
+						Contact Us
+					</h1>
 
 					<p
 						style={{
