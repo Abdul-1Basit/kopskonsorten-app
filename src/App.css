@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+.box {
+  transition: box-shadow .3s;
+ 
+  
+}
+.box:hover {
+  box-shadow: 0 0 3px rgba(33,33,33,.2); 
+}

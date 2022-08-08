@@ -1,8 +1,9 @@
 import "./App.css";
-import ContactUs from "./Pages/ContactUs";
-
+import "antd/dist/antd.css";
+//import ContactUs from "./Pages/ContactUs";
+import CustomContactUs from "./Pages/CustomContactUs";
 function App() {
-	return <ContactUs />;
+	return <CustomContactUs />;
 }
 
 export default App;
