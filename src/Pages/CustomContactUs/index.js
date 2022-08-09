@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Dropdown, Space, Drawer, Collapse, Row, Col } from "antd";
+import { Menu, Dropdown, Drawer, Collapse, Row, Col } from "antd";
 import logo from "../../Assets/Images/logo.PNG";
 import WhiteLogo from "../../Assets/Images/whiteLogo.png";
 import { BsChat } from "react-icons/bs";
@@ -32,9 +32,9 @@ export default function CustomContactUs() {
 	const [visible, setVisible] = React.useState(true);
 	const [activeItem, setActiveItem] = React.useState(1);
 
-	const showDrawer = () => {
-		setVisible(true);
-	};
+	// const showDrawer = () => {
+	// 	setVisible(true);
+	// };
 
 	const onClose = () => {
 		setVisible(false);
@@ -44,12 +44,12 @@ export default function CustomContactUs() {
 			items={[
 				{
 					label: (
-						<a
-							href="#"
+						<button
+							//href="#"
 							style={{ width: 80, color: "#010c42", fontWeight: "bold" }}
 						>
 							Releases
-						</a>
+						</button>
 					),
 					key: "0",
 				},
@@ -105,7 +105,7 @@ export default function CustomContactUs() {
 						/>
 					</span>
 					<Dropdown overlay={menu} trigger={["click"]}>
-						<a
+						<button
 							onClick={(e) => e.preventDefault()}
 							style={{ color: "#010c42", fontWeight: "bold" }}
 						>
@@ -121,7 +121,7 @@ export default function CustomContactUs() {
 								Produkt
 								<DownOutlined size={10} style={{ fontSize: 8 }} />
 							</div>
-						</a>
+						</button>
 					</Dropdown>
 					<span style={{ color: "#010c42", fontWeight: "bold" }}>Preise</span>
 					<span style={{ color: "#010c42", fontWeight: "bold" }}>
@@ -768,8 +768,7 @@ export function FirstComponent() {
 					width: "100%",
 				}}
 				type="video/mp4"
-				//	title="Youtube Player"
-
+				title="-"
 				//allow="autoplay"
 				frameborder="0"
 				allowFullScreen
@@ -800,7 +799,7 @@ export function SecondComponent() {
 					maxWidth: 1160,
 					width: "100%",
 				}}
-				type="video/mp4"
+				type="--"
 				//	title="Youtube Player"
 
 				//allow="autoplay"
