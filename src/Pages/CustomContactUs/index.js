@@ -1,16 +1,25 @@
 import React from "react";
-import { Button, Card, Drawer, Space } from "antd";
+import { Menu, Dropdown, Space, Drawer, Collapse, Row, Col } from "antd";
 import logo from "../../Assets/Images/logo.PNG";
+import WhiteLogo from "../../Assets/Images/whiteLogo.png";
 import { BsChat } from "react-icons/bs";
+import {
+	DownOutlined,
+	MenuFoldOutlined,
+	MenuUnfoldOutlined,
+} from "@ant-design/icons";
+
 import { GrCalendar } from "react-icons/gr";
+import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import opt1 from "../../Assets/Images/optOne.png";
 import opt2 from "../../Assets/Images/optTwo.png";
 import opt3 from "../../Assets/Images/optThree.png";
 import opt4 from "../../Assets/Images/optFour.png";
-import videoOne from "../../Assets/Videos/emlen-intro-digitaler-deal-raum.mp4";
+import videoOne from "../../Assets/Videos/Company-Video.mp4";
 import VideoTwo from "../../Assets/Videos/emlen-digitaler-deal-raum-90-sekunden.mp4";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import { Calendar } from "react-modern-calendar-datepicker";
+import { ScheduleMeeting } from "react-schedule-meeting";
+
 import {
 	ShareAltOutlined,
 	ExportOutlined,
@@ -18,6 +27,7 @@ import {
 	SearchOutlined,
 } from "@ant-design/icons";
 import profile from "../../Assets/Images/profile.jpg";
+import backgroundImage from "../../Assets/Images/backgroundImage.png";
 export default function CustomContactUs() {
 	const [visible, setVisible] = React.useState(true);
 	const [activeItem, setActiveItem] = React.useState(1);
@@ -27,24 +37,284 @@ export default function CustomContactUs() {
 	};
 
 	const onClose = () => {
-		//	setVisible(false);
+		setVisible(false);
 	};
+	const menu = (
+		<Menu
+			items={[
+				{
+					label: (
+						<a
+							href="#"
+							style={{ width: 80, color: "#010c42", fontWeight: "bold" }}
+						>
+							Releases
+						</a>
+					),
+					key: "0",
+				},
+			]}
+		/>
+	);
 	return (
 		<div
 			style={{
 				display: "flex",
-				backgroundColor: "#fff",
+				//backgroundColor: "#fff",
+				background: backgroundImage,
 				minHeight: "100vh",
 				flexDirection: "column",
 			}}
 		>
-			<div style={{ height: "100%", width: visible ? "75%" : "100%" }}>
+			<Row
+				style={{
+					//	backgroundColor: "#fff",
+					backgroundColor: "rgba(255, 255, 255, 0.9)",
+
+					padding: 20,
+					display: "flex",
+					flexDirection: "row",
+					alignItems: "center",
+					justifyContent: "space-between",
+					position: "fixed",
+					top: 0,
+					width: "100%",
+				}}
+			>
+				<Col
+					lg={12}
+					style={{
+						display: "flex",
+						flexDirection: "row",
+						alignItems: "center",
+						justifyContent: "space-between",
+						width: "100%",
+					}}
+				>
+					<span>
+						<img
+							src={logo}
+							style={{
+								width: 130,
+								height: 40,
+								borderRadius: 6,
+								paddingRight: 5,
+								objectFit: "contain",
+							}}
+							alt="logo"
+						/>
+					</span>
+					<Dropdown overlay={menu} trigger={["click"]}>
+						<a
+							onClick={(e) => e.preventDefault()}
+							style={{ color: "#010c42", fontWeight: "bold" }}
+						>
+							<div
+								style={{
+									flexDirection: "row",
+									display: "flex",
+									alignItems: "center",
+									justifyContent: "space-between",
+									width: 75,
+								}}
+							>
+								Produkt
+								<DownOutlined size={10} style={{ fontSize: 8 }} />
+							</div>
+						</a>
+					</Dropdown>
+					<span style={{ color: "#010c42", fontWeight: "bold" }}>Preise</span>
+					<span style={{ color: "#010c42", fontWeight: "bold" }}>
+						Resources
+					</span>
+					<span style={{ color: "#010c42", fontWeight: "bold" }}>EN</span>
+				</Col>
+
+				<Col lg={6}></Col>
+				<Col
+					lg={5}
+					style={{
+						display: "flex",
+						flexDirection: "row",
+						alignItems: "center",
+						justifyContent: "space-between",
+					}}
+				>
+					<span
+						style={{
+							color: "#010c42",
+							fontWeight: "bold",
+							paddingLeft: 50,
+							paddingRight: 20,
+						}}
+					>
+						Sign in
+					</span>
+
+					<button
+						type="button"
+						style={{
+							color: "#fff",
+							paddingTop: 7.5,
+							paddingBottom: 7.5,
+							paddingLeft: 15,
+							paddingRight: 15,
+							borderRadius: 32,
+							backgroundColor: "#fe2074",
+							fontWeight: "bold",
+							fontSize: 13,
+							outline: "none",
+							border: 0,
+						}}
+					>
+						Demo buchen
+					</button>
+					<div style={{ paddingLeft: 10 }}>
+						{visible ? (
+							<MenuFoldOutlined
+								style={{ color: "#010c42", fontSize: 25 }}
+								onClick={() => {
+									setVisible(false);
+								}}
+							/>
+						) : (
+							<MenuUnfoldOutlined
+								style={{ color: "#010c42", fontSize: 25 }}
+								onClick={() => {
+									setVisible(true);
+								}}
+							/>
+						)}
+					</div>
+				</Col>
+			</Row>
+			<div
+				style={{
+					height: "100%",
+					width: visible ? "75%" : "100%",
+					//padding: 30,
+					paddingTop: 100,
+				}}
+			>
 				{activeItem === 0 && <FirstComponent />}
 				{activeItem === 1 && <SecondComponent />}
 				{activeItem === 2 && <ThirdComponent />}
 				{activeItem === 3 && <FourthComponent />}
 				{activeItem === 4 && <FifthComponent />}
 			</div>
+			<Row
+				style={{
+					backgroundColor: "#010c42",
+					paddingTop: 80,
+					paddingBottom: 40,
+					paddingLeft: 20,
+					paddingRight: 20,
+				}}
+			>
+				<Col lg={3}>
+					<span>
+						<img
+							src={WhiteLogo}
+							style={{
+								width: 130,
+								height: 40,
+								borderRadius: 6,
+								paddingRight: 5,
+								objectFit: "contain",
+							}}
+							alt="logo"
+						/>
+					</span>
+					<br /> <br />
+					<span style={{ fontSize: 13, color: "#fff" }}>emlen GmbH</span>
+					<br />
+					<span style={{ fontSize: 13, color: "#fff" }}>
+						Dudweilerstraße 71
+					</span>
+					<br />
+					<span style={{ fontSize: 13, color: "#fff" }}>66111 Saarbrücken</span>
+					<br />
+					<span style={{ fontSize: 13, color: "#fff" }}>Germany</span>
+					<br />
+				</Col>
+
+				<Col lg={15}></Col>
+
+				<Col lg={6}>
+					<Row>
+						<Col lg={12}>
+							<span style={{ fontWeight: "bold", fontSize: 16, color: "#fff" }}>
+								Product
+							</span>
+							<br /> <br />
+							<p style={{ color: "#fff", fontWeight: "bold" }}>Product</p>
+							<p style={{ color: "#fff", fontWeight: "bold" }}>Blog</p>
+							<p style={{ color: "#fff", fontWeight: "bold" }}>Sign in</p>
+						</Col>
+						<Col lg={12}>
+							{" "}
+							<span style={{ fontWeight: "bold", fontSize: 16, color: "#fff" }}>
+								Company
+							</span>
+							<br /> <br />
+							<p style={{ color: "#fff", fontWeight: "bold" }}>Imprint</p>
+							<p style={{ color: "#fff", fontWeight: "bold" }}>Data Privacy</p>
+							<p style={{ color: "#fff", fontWeight: "bold" }}>
+								Terms & Conditions
+							</p>
+							<p style={{ color: "#fff", fontWeight: "bold" }}>Data Security</p>
+							<p style={{ color: "#fff", fontWeight: "bold" }}>Jobs</p>
+						</Col>
+					</Row>
+				</Col>
+				<Col lg={24} style={{ display: "flex", flexDirection: "row" }}>
+					<div style={{ paddingLeft: 0, paddingRight: 10 }}>
+						<FaFacebookF
+							style={{
+								color: "#fff",
+								fontSize: 22,
+							}}
+						/>{" "}
+					</div>
+					<div style={{ paddingLeft: 15, paddingRight: 10 }}>
+						<FaLinkedinIn
+							style={{
+								color: "#fff",
+								fontSize: 22,
+							}}
+						/>
+					</div>
+					<div style={{ paddingLeft: 15, paddingRight: 10 }}>
+						<FaTwitter
+							style={{
+								color: "#fff",
+								fontSize: 22,
+							}}
+						/>
+					</div>
+				</Col>
+				<Col
+					lg={24}
+					style={{
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+						paddingTop: 20,
+						paddingBottom: 20,
+					}}
+				>
+					<span
+						style={{
+							textAlign: "center",
+							fontSize: 15,
+							fontWeight: "bold",
+							color: "#fff",
+						}}
+					>
+						© 2022 emlen GmbH. All rights reserved.
+					</span>
+				</Col>
+			</Row>
 			<Drawer
 				title=""
 				placement={"right"}
@@ -473,7 +743,17 @@ export function SideBar(props) {
 }
 export function FirstComponent() {
 	return (
-		<div style={{ height: "100%", width: "100%", display: "flex" }}>
+		<div
+			style={{
+				height: "100%",
+				width: "100%",
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+				paddingTop: 120,
+				paddingBottom: 60,
+			}}
+		>
 			{/* <source
 				type="video/mp4"
 				style={{ width: "100%", height: "100%" }}
@@ -502,9 +782,9 @@ export function SecondComponent() {
 	return (
 		<div
 			style={{
+				alignItems: "center",
+				justifyContent: "center",
 				display: "flex",
-				alignItems: "flex-start",
-				justifyContent: "flex-start",
 			}}
 		>
 			{/* <source
@@ -547,48 +827,163 @@ export function ThirdComponent() {
 	);
 }
 export function FourthComponent() {
+	const { Panel } = Collapse;
 	return (
 		<div
 			style={{
 				height: "100%",
 				width: "100%",
 				minHeight: "100vh",
+				backgroundColor: "#f1f4f9",
 				display: "flex",
-				alignItems: "center",
-				justifyContent: "center",
+				paddingTop: 120,
+				paddingLeft: 50,
+				alignItems: "flex-start",
+				justifyContent: "flex-start",
+				flexDirection: "column",
 			}}
 		>
-			<p>Fourth Page</p>
+			<span style={{ fontSize: 40, fontWeight: "bold", color: "#010c42" }}>
+				FAQ rubrics
+			</span>
+			<br />
+			{/* <p style={{ fontSize: 25, color: "#010c42" }}>
+				1- I have some questions about nxtDynamics products in general
+			</p> */}
+			<Collapse defaultActiveKey={["10"]} onChange={() => {}}>
+				<Panel
+					header=" I have some questions about nxtDynamics products in general"
+					key="1"
+					style={{
+						padding: 20,
+						color: "#010c42",
+						fontSize: 20,
+						backgroundColor: "transparent",
+					}}
+				>
+					<p></p>
+				</Panel>
+				<Panel
+					header="I have questions about the buying process of nxtEarth / nxtFlow / nxtQ"
+					key="2"
+					style={{
+						padding: 20,
+						color: "#010c42",
+						fontSize: 20,
+						backgroundColor: "transparent",
+					}}
+				>
+					<p></p>
+				</Panel>
+				<Panel
+					header="I have questions about the application and the utilization of the smartglasses:"
+					key="3"
+					style={{
+						padding: 20,
+						color: "#010c42",
+						fontSize: 20,
+						backgroundColor: "transparent",
+					}}
+				>
+					<p></p>
+				</Panel>
+				<Panel
+					header=" I have questions about the equipment of the smartglasses"
+					key="4"
+					style={{
+						padding: 20,
+						color: "#010c42",
+						fontSize: 20,
+						backgroundColor: "transparent",
+					}}
+				>
+					<p></p>
+				</Panel>
+				<Panel
+					header="I have questions about the additional products of the smartglasses"
+					key="5"
+					style={{
+						padding: 20,
+						color: "#010c42",
+						fontSize: 20,
+						backgroundColor: "transparent",
+					}}
+				>
+					<p></p>
+				</Panel>
+				<Panel
+					header="What I've asked myself about nxtDynamics GmbH"
+					key="6"
+					style={{
+						padding: 20,
+						color: "#010c42",
+						fontSize: 20,
+						backgroundColor: "transparent",
+					}}
+				>
+					<p></p>
+				</Panel>
+			</Collapse>
+			<br /> <br />
 		</div>
 	);
 }
 export function FifthComponent() {
-	const [selectedDay, setSelectedDay] = React.useState(null);
-
+	const availableTimeslots = [0, 1, 2, 3, 4, 5].map((id) => {
+		return {
+			id,
+			startTime: new Date(
+				new Date(new Date().setDate(new Date().getDate() + id)).setHours(
+					9,
+					0,
+					0,
+					0
+				)
+			),
+			endTime: new Date(
+				new Date(new Date().setDate(new Date().getDate() + id)).setHours(
+					17,
+					0,
+					0,
+					0
+				)
+			),
+		};
+	});
 	return (
 		<div
 			style={{
 				height: "100%",
 				width: "100%",
 				minHeight: "100vh",
-				backgroundColor: "#f0f4fa",
+				//	backgroundColor: "#f0f4fa",
+				backgroundColor: "#f1f4f9",
 				display: "flex",
 				alignItems: "center",
+				paddingTop: 120,
+				paddingLeft: 50,
+				paddingRight: 50,
+				paddingBottom: 50,
 				justifyContent: "space-between",
 			}}
 		>
+			<span style={{ fontSize: 44, fontWeight: "bold", color: "#010c42" }}>
+				Buche hier einen Termin mit einem Experten:
+			</span>
 			<div
 				style={{
 					backgroundColor: "#010c42",
 					width: "100%",
-					maxWidth: 500,
-					borderRadius: 10,
+					maxWidth: 600,
+					//borderRadius: 10,
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "center",
 					justifyContent: "center",
 					paddingTop: 30,
 					paddingBottom: 30,
+					paddingRight: 10,
+					paddingLeft: 10,
 				}}
 			>
 				<img
@@ -599,6 +994,7 @@ export function FifthComponent() {
 						borderRadius: 75 / 2,
 						paddingRight: 5,
 						objectFit: "cover",
+						border: "3px solid #fff",
 					}}
 					alt="profile cover"
 				/>
@@ -606,22 +1002,21 @@ export function FifthComponent() {
 					style={{
 						textAlign: "center",
 						color: "#fff",
-						fontSize: 35,
+						fontSize: 28,
 						paddingTop: 10,
 						paddingBottom: 10,
 					}}
 				>
 					emlen Discovery & Demo Meeting w/ Marc Grewenig (Co-Founder)
 				</span>
-				<Calendar
-					value={selectedDay}
-					onChange={setSelectedDay}
-					shouldHighlightWeekends
+				<ScheduleMeeting
+					borderRadius={10}
+					primaryColor="#3f5b85"
+					eventDurationInMinutes={30}
+					availableTimeslots={availableTimeslots}
+					onStartTimeSelect={console.log}
 				/>
 			</div>
-			<span style={{ fontSize: 44, fontWeight: "bold", color: "#010c42" }}>
-				Buche hier einen Termin mit einem Experten:
-			</span>
 		</div>
 	);
 }
