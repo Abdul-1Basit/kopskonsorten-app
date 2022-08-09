@@ -768,7 +768,7 @@ export function FirstComponent() {
 					width: "100%",
 				}}
 				type="video/mp4"
-				title="-"
+				title="newVid"
 				//allow="autoplay"
 				frameborder="0"
 				allowFullScreen
@@ -799,9 +799,8 @@ export function SecondComponent() {
 					maxWidth: 1160,
 					width: "100%",
 				}}
-				type="--"
-				//	title="Youtube Player"
-
+				type="new/video"
+				title="Youtube Player"
 				//allow="autoplay"
 				frameborder="0"
 				allowFullScreen
