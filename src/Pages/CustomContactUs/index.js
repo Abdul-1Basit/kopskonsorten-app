@@ -63,7 +63,7 @@ export default function CustomContactUs() {
 	// 	/>
 	// );
 
-	React.useEffect(() => {}, [window.innerWidth]);
+	//React.useEffect(() => {}, [window.innerWidth]);
 	return (
 		<div
 			style={{
