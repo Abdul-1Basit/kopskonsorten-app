@@ -234,7 +234,7 @@ export default function CustomContactUs() {
 						onClose={onClose}
 						visible={visible}
 						key={"right"}
-						width={window.innerWidth > 900 ? "30%" : "50%"}
+						width={window.innerWidth > 900 ? "27.5%" : "50%"}
 						//	size={"default"}
 						style={{
 							display: "flex",
@@ -591,6 +591,7 @@ export function SideBar(props) {
 					<ExportOutlined style={{ color: "black", fontSize: 15 }} />
 				</div>
 			</div>
+			<br />
 			<div
 				style={{
 					transition: "box-shadow .3s",
@@ -613,9 +614,11 @@ export function SideBar(props) {
 							//		flexDirection: "row",
 							alignItems: "center",
 							//		justifyContent: "center",
+							paddingLeft: 10,
+							paddingRight: 10,
 						}}
 					>
-						<Col lg={12} md={12} sm={24} xs={24}>
+						<Col lg={12} md={12} sm={12} xs={12}>
 							<img
 								src={profile}
 								style={{
@@ -628,17 +631,17 @@ export function SideBar(props) {
 								alt="profile cover"
 							/>
 						</Col>
-						<Col lg={12} md={12} sm={24} xs={24}>
-							<p
+						<Col lg={12} md={12} sm={12} xs={12}>
+							<span
 								style={{
 									fontSize: 18,
 									color: "#464a57",
 									fontWeight: "normal",
-									paddingTop: 15,
+									//	paddingTop: 5,
 								}}
 							>
-								Marc Grewenig
-							</p>
+								{window.innerWidth > 900 ? "Marc Grewenig" : "Marc"}
+							</span>
 						</Col>
 					</Row>
 					<RightOutlined
@@ -657,12 +660,14 @@ export function SideBar(props) {
 				style={{
 					paddingTop: 10,
 					display: "flex",
-
+					alignItems: "center",
+					justifyContent: "center",
 					//			paddingRight: 15,
 					//			paddingLeft: 15,
 				}}
 			>
-				<Col lg={12} md={12} sm={24} xs={24} style={{ paddingBottom: 10 }}>
+				<Col lg={2} md={2} sm={0} xs={0}></Col>
+				<Col lg={10} md={10} sm={24} xs={24} style={{ paddingBottom: 10 }}>
 					<div
 						style={{
 							paddingTop: 10,
@@ -675,6 +680,8 @@ export function SideBar(props) {
 							justifyContent: "space-between",
 							borderRadius: 4,
 							backgroundColor: "#f4f5f8",
+							maxWidth: 150,
+							margin: 5,
 						}}
 					>
 						<BsChat
@@ -692,7 +699,7 @@ export function SideBar(props) {
 						</span>
 					</div>
 				</Col>
-				<Col lg={12} md={12} sm={24} xs={24} style={{ paddingBottom: 10 }}>
+				<Col lg={10} md={10} sm={24} xs={24} style={{ paddingBottom: 10 }}>
 					<div
 						style={{
 							paddingTop: 10,
@@ -705,6 +712,8 @@ export function SideBar(props) {
 							justifyContent: "space-between",
 							borderRadius: 4,
 							backgroundColor: "#f4f5f8",
+							maxWidth: 150,
+							margin: 5,
 						}}
 					>
 						<GrCalendar
@@ -722,6 +731,7 @@ export function SideBar(props) {
 						</span>
 					</div>
 				</Col>
+				<Col lg={2} md={2} sm={0} xs={0}></Col>
 			</Row>
 			<span
 				style={{
@@ -749,7 +759,7 @@ export function SideBar(props) {
 			>
 				<SearchOutlined style={{ fontSize: 15, color: "#464a57" }} />
 				<input
-					placeholder="Search by name"
+					placeholder={window.innerWidth > 900 ? "Search by name" : "Search..."}
 					style={{
 						fontSize: 15,
 						color: "#464a57",
