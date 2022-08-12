@@ -1204,10 +1204,20 @@ export function FifthComponent() {
 				paddingLeft: 50,
 				paddingRight: 50,
 				paddingBottom: 50,
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
 			}}
 		>
 			<Col lg={12} md={12} sm={24} xs={24} style={{ paddingBottom: 20 }}>
-				<span style={{ fontSize: 44, fontWeight: "bold", color: "#010c42" }}>
+				<span
+					style={{
+						fontSize: 44,
+						fontWeight: "bold",
+						color: "#010c42",
+						textAlign: window.innerWidth > 900 ? "left" : "center",
+					}}
+				>
 					Buche hier einen Termin mit einem Experten:
 				</span>
 			</Col>
