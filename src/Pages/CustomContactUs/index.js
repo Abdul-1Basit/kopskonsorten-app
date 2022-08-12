@@ -30,7 +30,7 @@ import profile from "../../Assets/Images/profile.jpg";
 import backgroundImage from "../../Assets/Images/backgroundImage.png";
 export default function CustomContactUs() {
 	const [visible, setVisible] = React.useState(true);
-	const [activeItem, setActiveItem] = React.useState(1);
+	const [activeItem, setActiveItem] = React.useState(4);
 
 	// const showDrawer = () => {
 	// 	setVisible(true);
@@ -39,23 +39,31 @@ export default function CustomContactUs() {
 	const onClose = () => {
 		setVisible(false);
 	};
-	const menu = (
-		<Menu
-			items={[
-				{
-					label: (
-						<button
-							//href="#"
-							style={{ width: 80, color: "#010c42", fontWeight: "bold" }}
-						>
-							Releases
-						</button>
-					),
-					key: "0",
-				},
-			]}
-		/>
-	);
+	// const menu = (
+	// 	<Menu
+	// 		items={[
+	// 			{
+	// 				label: (
+	// 					<button
+	// 						//href="#"
+	// 						style={{
+	// 							width: 80,
+	// 							color: "#010c42",
+	// 							fontWeight: "bold",
+	// 							border: 0,
+	// 							backgroundColor: "transparent",
+	// 						}}
+	// 					>
+	// 						Releases
+	// 					</button>
+	// 				),
+	// 				key: "0",
+	// 			},
+	// 		]}
+	// 	/>
+	// );
+
+	React.useEffect(() => {}, [window.innerWidth]);
 	return (
 		<div
 			style={{
@@ -66,7 +74,8 @@ export default function CustomContactUs() {
 				flexDirection: "column",
 			}}
 		>
-			<Row
+			<Nav {...{ visible, setVisible }} />
+			{/* <Row
 				style={{
 					//	backgroundColor: "#fff",
 					backgroundColor: "rgba(255, 255, 255, 0.9)",
@@ -106,8 +115,15 @@ export default function CustomContactUs() {
 					</span>
 					<Dropdown overlay={menu} trigger={["click"]}>
 						<button
-							onClick={(e) => e.preventDefault()}
-							style={{ color: "#010c42", fontWeight: "bold" }}
+							onClick={(e) => {
+								e.preventDefault();
+							}}
+							style={{
+								color: "#010c42",
+								fontWeight: "bold",
+								border: 0,
+								backgroundColor: "transparent",
+							}}
 						>
 							<div
 								style={{
@@ -123,7 +139,12 @@ export default function CustomContactUs() {
 							</div>
 						</button>
 					</Dropdown>
-					<span style={{ color: "#010c42", fontWeight: "bold" }}>Preise</span>
+					<span
+						onClick={() => alert("clidke")}
+						style={{ color: "#010c42", fontWeight: "bold" }}
+					>
+						Preise
+					</span>
 					<span style={{ color: "#010c42", fontWeight: "bold" }}>
 						Resources
 					</span>
@@ -174,7 +195,7 @@ export default function CustomContactUs() {
 							<MenuFoldOutlined
 								style={{ color: "#010c42", fontSize: 25 }}
 								onClick={() => {
-									setVisible(false);
+									setVisible(true);
 								}}
 							/>
 						) : (
@@ -182,12 +203,14 @@ export default function CustomContactUs() {
 								style={{ color: "#010c42", fontSize: 25 }}
 								onClick={() => {
 									setVisible(true);
+									alert("clicked");
 								}}
 							/>
 						)}
 					</div>
 				</Col>
-			</Row>
+			</Row> */}
+
 			<div
 				style={{
 					height: "100%",
@@ -202,137 +225,301 @@ export default function CustomContactUs() {
 				{activeItem === 3 && <FourthComponent />}
 				{activeItem === 4 && <FifthComponent />}
 			</div>
-			<Row
-				style={{
-					backgroundColor: "#010c42",
-					paddingTop: 80,
-					paddingBottom: 40,
-					paddingLeft: 20,
-					paddingRight: 20,
-				}}
-			>
-				<Col lg={3}>
-					<span>
-						<img
-							src={WhiteLogo}
-							style={{
-								width: 130,
-								height: 40,
-								borderRadius: 6,
-								paddingRight: 5,
-								objectFit: "contain",
-							}}
-							alt="logo"
-						/>
-					</span>
-					<br /> <br />
-					<span style={{ fontSize: 13, color: "#fff" }}>emlen GmbH</span>
-					<br />
-					<span style={{ fontSize: 13, color: "#fff" }}>
-						Dudweilerstraße 71
-					</span>
-					<br />
-					<span style={{ fontSize: 13, color: "#fff" }}>66111 Saarbrücken</span>
-					<br />
-					<span style={{ fontSize: 13, color: "#fff" }}>Germany</span>
-					<br />
-				</Col>
-
-				<Col lg={15}></Col>
-
-				<Col lg={6}>
-					<Row>
-						<Col lg={12}>
-							<span style={{ fontWeight: "bold", fontSize: 16, color: "#fff" }}>
-								Product
-							</span>
-							<br /> <br />
-							<p style={{ color: "#fff", fontWeight: "bold" }}>Product</p>
-							<p style={{ color: "#fff", fontWeight: "bold" }}>Blog</p>
-							<p style={{ color: "#fff", fontWeight: "bold" }}>Sign in</p>
-						</Col>
-						<Col lg={12}>
-							{" "}
-							<span style={{ fontWeight: "bold", fontSize: 16, color: "#fff" }}>
-								Company
-							</span>
-							<br /> <br />
-							<p style={{ color: "#fff", fontWeight: "bold" }}>Imprint</p>
-							<p style={{ color: "#fff", fontWeight: "bold" }}>Data Privacy</p>
-							<p style={{ color: "#fff", fontWeight: "bold" }}>
-								Terms & Conditions
-							</p>
-							<p style={{ color: "#fff", fontWeight: "bold" }}>Data Security</p>
-							<p style={{ color: "#fff", fontWeight: "bold" }}>Jobs</p>
-						</Col>
-					</Row>
-				</Col>
-				<Col lg={24} style={{ display: "flex", flexDirection: "row" }}>
-					<div style={{ paddingLeft: 0, paddingRight: 10 }}>
-						<FaFacebookF
-							style={{
-								color: "#fff",
-								fontSize: 22,
-							}}
-						/>{" "}
-					</div>
-					<div style={{ paddingLeft: 15, paddingRight: 10 }}>
-						<FaLinkedinIn
-							style={{
-								color: "#fff",
-								fontSize: 22,
-							}}
-						/>
-					</div>
-					<div style={{ paddingLeft: 15, paddingRight: 10 }}>
-						<FaTwitter
-							style={{
-								color: "#fff",
-								fontSize: 22,
-							}}
-						/>
-					</div>
-				</Col>
-				<Col
-					lg={24}
-					style={{
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-						paddingTop: 20,
-						paddingBottom: 20,
-					}}
-				>
-					<span
+			<Row>
+				<Col lg={24} md={20} sm={6} xs={4}>
+					<Drawer
+						title=""
+						placement={"right"}
+						closable={false}
+						onClose={onClose}
+						visible={visible}
+						key={"right"}
+						width={window.innerWidth > 900 ? "30%" : "50%"}
+						//	size={"default"}
 						style={{
-							textAlign: "center",
-							fontSize: 15,
-							fontWeight: "bold",
-							color: "#fff",
+							display: "flex",
+							height: "100%",
+							minHeight: "100vh",
+
+							flexDirection: "column",
 						}}
 					>
-						© 2022 emlen GmbH. All rights reserved.
-					</span>
+						<SideBar {...{ activeItem, setActiveItem }} />
+					</Drawer>
 				</Col>
 			</Row>
-			<Drawer
-				title=""
-				placement={"right"}
-				closable={false}
-				onClose={onClose}
-				visible={visible}
-				key={"right"}
-				size={"default"}
+			<Footer />
+		</div>
+	);
+}
+export function Nav(props) {
+	const menu = (
+		<Menu
+			items={[
+				{
+					label: (
+						<button
+							//href="#"
+							style={{
+								width: 80,
+								color: "#010c42",
+								fontWeight: "bold",
+								border: 0,
+								backgroundColor: "transparent",
+							}}
+						>
+							Releases
+						</button>
+					),
+					key: "0",
+				},
+			]}
+		/>
+	);
+	return (
+		<Row
+			style={{
+				//	backgroundColor: "#fff",
+				backgroundColor: "rgba(255, 255, 255, 0.9)",
+
+				padding: 20,
+				display: "flex",
+				flexDirection: "row",
+				alignItems: "center",
+				justifyContent: "space-between",
+				position: "fixed",
+				top: 0,
+				width: "100%",
+			}}
+		>
+			<Col
+				lg={12}
 				style={{
 					display: "flex",
-					height: "100%",
-					minHeight: "100vh",
-					flexDirection: "column",
+					flexDirection: "row",
+					alignItems: "center",
+					justifyContent: "space-between",
+					width: "100%",
 				}}
 			>
-				<SideBar {...{ activeItem, setActiveItem }} />
-			</Drawer>
-		</div>
+				<span>
+					<img
+						src={logo}
+						style={{
+							width: 130,
+							height: 40,
+							borderRadius: 6,
+							paddingRight: 5,
+							objectFit: "contain",
+						}}
+						alt="logo"
+					/>
+				</span>
+				<Dropdown overlay={menu} trigger={["click"]}>
+					<button
+						onClick={(e) => {
+							e.preventDefault();
+						}}
+						style={{
+							color: "#010c42",
+							fontWeight: "bold",
+							border: 0,
+							backgroundColor: "transparent",
+						}}
+					>
+						<div
+							style={{
+								flexDirection: "row",
+								display: "flex",
+								alignItems: "center",
+								justifyContent: "space-between",
+								width: 75,
+							}}
+						>
+							Produkt
+							<DownOutlined size={10} style={{ fontSize: 8 }} />
+						</div>
+					</button>
+				</Dropdown>
+				<span style={{ color: "#010c42", fontWeight: "bold" }}>Preise</span>
+				<span style={{ color: "#010c42", fontWeight: "bold" }}>Resources</span>
+				<span style={{ color: "#010c42", fontWeight: "bold" }}>EN</span>
+			</Col>
+
+			<Col lg={6}></Col>
+			<Col
+				lg={5}
+				style={{
+					display: "flex",
+					flexDirection: "row",
+					alignItems: "center",
+					justifyContent: "space-between",
+				}}
+			>
+				<span
+					style={{
+						color: "#010c42",
+						fontWeight: "bold",
+						paddingLeft: 50,
+						paddingRight: 20,
+					}}
+				>
+					Sign in
+				</span>
+
+				<button
+					type="button"
+					style={{
+						color: "#fff",
+						paddingTop: 7.5,
+						paddingBottom: 7.5,
+						paddingLeft: 15,
+						paddingRight: 15,
+						borderRadius: 32,
+						backgroundColor: "#fe2074",
+						fontWeight: "bold",
+						fontSize: 13,
+						outline: "none",
+						border: 0,
+					}}
+				>
+					Demo buchen
+				</button>
+				<div style={{ paddingLeft: 10 }}>
+					{props.visible ? (
+						<MenuFoldOutlined
+							style={{ color: "#010c42", fontSize: 25 }}
+							onClick={() => {
+								props.setVisible(false);
+							}}
+						/>
+					) : (
+						<MenuUnfoldOutlined
+							style={{ color: "#010c42", fontSize: 25 }}
+							onClick={() => {
+								props.setVisible(true);
+								//alert("clicked");
+							}}
+						/>
+					)}
+				</div>
+			</Col>
+		</Row>
+	);
+}
+export function Footer() {
+	return (
+		<Row
+			style={{
+				backgroundColor: "#010c42",
+				paddingTop: 80,
+				paddingBottom: 40,
+				paddingLeft: 20,
+				paddingRight: 20,
+			}}
+		>
+			<Col lg={3}>
+				<span>
+					<img
+						src={WhiteLogo}
+						style={{
+							width: 130,
+							height: 40,
+							borderRadius: 6,
+							paddingRight: 5,
+							objectFit: "contain",
+						}}
+						alt="logo"
+					/>
+				</span>
+				<br /> <br />
+				<span style={{ fontSize: 13, color: "#fff" }}>emlen GmbH</span>
+				<br />
+				<span style={{ fontSize: 13, color: "#fff" }}>Dudweilerstraße 71</span>
+				<br />
+				<span style={{ fontSize: 13, color: "#fff" }}>66111 Saarbrücken</span>
+				<br />
+				<span style={{ fontSize: 13, color: "#fff" }}>Germany</span>
+				<br />
+			</Col>
+
+			<Col lg={15}></Col>
+
+			<Col lg={6}>
+				<Row>
+					<Col lg={12}>
+						<span style={{ fontWeight: "bold", fontSize: 16, color: "#fff" }}>
+							Product
+						</span>
+						<br /> <br />
+						<p style={{ color: "#fff", fontWeight: "bold" }}>Product</p>
+						<p style={{ color: "#fff", fontWeight: "bold" }}>Blog</p>
+						<p style={{ color: "#fff", fontWeight: "bold" }}>Sign in</p>
+					</Col>
+					<Col lg={12}>
+						{" "}
+						<span style={{ fontWeight: "bold", fontSize: 16, color: "#fff" }}>
+							Company
+						</span>
+						<br /> <br />
+						<p style={{ color: "#fff", fontWeight: "bold" }}>Imprint</p>
+						<p style={{ color: "#fff", fontWeight: "bold" }}>Data Privacy</p>
+						<p style={{ color: "#fff", fontWeight: "bold" }}>
+							Terms & Conditions
+						</p>
+						<p style={{ color: "#fff", fontWeight: "bold" }}>Data Security</p>
+						<p style={{ color: "#fff", fontWeight: "bold" }}>Jobs</p>
+					</Col>
+				</Row>
+			</Col>
+			<Col lg={24} style={{ display: "flex", flexDirection: "row" }}>
+				<div style={{ paddingLeft: 0, paddingRight: 10 }}>
+					<FaFacebookF
+						style={{
+							color: "#fff",
+							fontSize: 22,
+						}}
+					/>{" "}
+				</div>
+				<div style={{ paddingLeft: 15, paddingRight: 10 }}>
+					<FaLinkedinIn
+						style={{
+							color: "#fff",
+							fontSize: 22,
+						}}
+					/>
+				</div>
+				<div style={{ paddingLeft: 15, paddingRight: 10 }}>
+					<FaTwitter
+						style={{
+							color: "#fff",
+							fontSize: 22,
+						}}
+					/>
+				</div>
+			</Col>
+			<Col
+				lg={24}
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+					paddingTop: 20,
+					paddingBottom: 20,
+				}}
+			>
+				<span
+					style={{
+						textAlign: "center",
+						fontSize: 15,
+						fontWeight: "bold",
+						color: "#fff",
+					}}
+				>
+					© 2022 emlen GmbH. All rights reserved.
+				</span>
+			</Col>
+		</Row>
 	);
 }
 export function SideBar(props) {
@@ -389,7 +576,6 @@ export function SideBar(props) {
 						flexDirection: "row",
 						alignItems: "center",
 						justifyContent: "space-between",
-						//	paddingRight: 20,
 					}}
 				>
 					<ShareAltOutlined
@@ -421,117 +607,122 @@ export function SideBar(props) {
 						justifyContent: "space-between",
 					}}
 				>
-					<div
+					<Row
 						style={{
 							display: "flex",
-							flexDirection: "row",
+							//		flexDirection: "row",
 							alignItems: "center",
-							justifyContent: "center",
+							//		justifyContent: "center",
 						}}
 					>
-						<img
-							src={profile}
-							style={{
-								width: 40,
-								height: 40,
-								borderRadius: 40 / 2,
-								paddingRight: 5,
-								objectFit: "cover",
-							}}
-							alt="profile cover"
-						/>
-
-						<p
-							style={{
-								fontSize: 18,
-								color: "#464a57",
-								fontWeight: "normal",
-								paddingTop: 15,
-							}}
-						>
-							Marc Grewenig
-						</p>
-					</div>
+						<Col lg={12} md={12} sm={24} xs={24}>
+							<img
+								src={profile}
+								style={{
+									width: 40,
+									height: 40,
+									borderRadius: 40 / 2,
+									paddingRight: 5,
+									objectFit: "cover",
+								}}
+								alt="profile cover"
+							/>
+						</Col>
+						<Col lg={12} md={12} sm={24} xs={24}>
+							<p
+								style={{
+									fontSize: 18,
+									color: "#464a57",
+									fontWeight: "normal",
+									paddingTop: 15,
+								}}
+							>
+								Marc Grewenig
+							</p>
+						</Col>
+					</Row>
 					<RightOutlined
 						size={30}
 						style={{ fontWeight: "bold", fontSize: 15 }}
 					/>
 				</div>
 			</div>
-			<p style={{ textAlign: "left" }}>
+			<p style={{ textAlign: window.innerWidth > 900 ? "left" : "center" }}>
 				Hey Jörg,
 				<br /> danke für dein Interesse an emlen. Hier kannst Du direkt einen
 				Termin für die Produkt Demo mit mir vereinbaren und bereits erste Infos
 				einsehen. Ich freue mich auf unser Gespräch. Gruß, Marc
 			</p>
-			<div
+			<Row
 				style={{
 					paddingTop: 10,
 					display: "flex",
-					flexDirection: "row",
-					alignItems: "center",
-					justifyContent: "space-between",
+
 					//			paddingRight: 15,
 					//			paddingLeft: 15,
 				}}
 			>
-				<div
-					style={{
-						paddingTop: 10,
-						paddingBottom: 10,
-						paddingRight: 30,
-						paddingLeft: 30,
-						display: "flex",
-						flexDirection: "row",
-						alignItems: "center",
-						justifyContent: "space-between",
-						borderRadius: 4,
-						backgroundColor: "#f4f5f8",
-					}}
-				>
-					<BsChat
-						style={{ color: "#464a57", fontSize: 17, fontWeight: "bolder" }}
-					/>
-					<span
+				<Col lg={12} md={12} sm={24} xs={24} style={{ paddingBottom: 10 }}>
+					<div
 						style={{
-							color: "#464a57",
-							paddingLeft: 5,
-							//	fontWeight: "bold",
-							fontSize: 17,
+							paddingTop: 10,
+							paddingBottom: 10,
+							paddingRight: 30,
+							paddingLeft: 30,
+							display: "flex",
+							flexDirection: "row",
+							alignItems: "center",
+							justifyContent: "space-between",
+							borderRadius: 4,
+							backgroundColor: "#f4f5f8",
 						}}
 					>
-						Chat
-					</span>
-				</div>
-				<div
-					style={{
-						paddingTop: 10,
-						paddingBottom: 10,
-						paddingRight: 30,
-						paddingLeft: 30,
-						display: "flex",
-						flexDirection: "row",
-						alignItems: "center",
-						justifyContent: "space-between",
-						borderRadius: 4,
-						backgroundColor: "#f4f5f8",
-					}}
-				>
-					<GrCalendar
-						style={{ color: "#464a57", fontSize: 17, fontWeight: "bolder" }}
-					/>
-					<span
+						<BsChat
+							style={{ color: "#464a57", fontSize: 17, fontWeight: "bolder" }}
+						/>
+						<span
+							style={{
+								color: "#464a57",
+								paddingLeft: 5,
+								//	fontWeight: "bold",
+								fontSize: 17,
+							}}
+						>
+							Chat
+						</span>
+					</div>
+				</Col>
+				<Col lg={12} md={12} sm={24} xs={24} style={{ paddingBottom: 10 }}>
+					<div
 						style={{
-							color: "#464a57",
-							paddingLeft: 5,
-							//	fontWeight: "bold",
-							fontSize: 17,
+							paddingTop: 10,
+							paddingBottom: 10,
+							paddingRight: 30,
+							paddingLeft: 30,
+							display: "flex",
+							flexDirection: "row",
+							alignItems: "center",
+							justifyContent: "space-between",
+							borderRadius: 4,
+							backgroundColor: "#f4f5f8",
 						}}
 					>
-						Demo
-					</span>
-				</div>
-			</div>
+						<GrCalendar
+							style={{ color: "#464a57", fontSize: 17, fontWeight: "bolder" }}
+						/>
+						<span
+							style={{
+								color: "#464a57",
+								paddingLeft: 5,
+								//	fontWeight: "bold",
+								fontSize: 17,
+							}}
+						>
+							Demo
+						</span>
+					</div>
+				</Col>
+			</Row>
 			<span
 				style={{
 					textAlign: "left",
@@ -582,12 +773,8 @@ export function SideBar(props) {
 					overflowY: "scroll",
 				}}
 			>
-				<div
+				<Row
 					style={{
-						flexDirection: "row",
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "flex-start",
 						border: props.activeItem === 0 ? "1px solid #ea4785" : 0,
 						borderRadius: 12,
 						padding: 5,
@@ -599,27 +786,36 @@ export function SideBar(props) {
 					}}
 					className="box"
 				>
-					<img
-						src={opt1}
-						style={{
-							objectFit: "cover",
-							width: 55,
-							height: 55,
-							borderRadius: 6,
-						}}
-						alt="option one"
-					/>
-					<span style={{ fontSize: 15, color: "#464a57", paddingLeft: 10 }}>
-						emlen Intro - Digitaler Deal Raum
-					</span>
-				</div>
-				<div
+					<Col lg={4} md={8} sm={24} xs={24}>
+						<img
+							src={opt1}
+							style={{
+								objectFit: "cover",
+								width: window.innerWidth > 900 ? 55 : "100%",
+								height: 55,
+								borderRadius: 6,
+							}}
+							alt="option one"
+						/>
+					</Col>
+
+					<Col lg={20} md={16}>
+						<span
+							style={{
+								fontSize: 15,
+								color: "#464a57",
+								paddingLeft: window.innerWidth > 900 ? 10 : 0,
+								textAlign: window.innerWidth > 900 ? "left" : "center",
+							}}
+						>
+							emlen Intro - Digitaler Deal Raum
+						</span>
+					</Col>
+				</Row>
+
+				<Row
 					style={{
-						flexDirection: "row",
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "flex-start",
-						border: props.activeItem === 1 ? "1px solid #ea4785" : 0,
+						border: props.activeItem === 1 ? "1px solid #ea4785" : 1,
 						borderRadius: 12,
 						padding: 5,
 						marginTop: 5,
@@ -630,27 +826,35 @@ export function SideBar(props) {
 					}}
 					className="box"
 				>
-					<img
-						src={opt2}
-						style={{
-							objectFit: "cover",
-							width: 55,
-							height: 55,
-							borderRadius: 6,
-						}}
-						alt="option Two"
-					/>
-					<span style={{ fontSize: 15, color: "#464a57", paddingLeft: 10 }}>
-						emlen - Digitaler Deal Raum (90 Sekunden)
-					</span>
-				</div>
-				<div
+					<Col lg={4} md={8} sm={24} xs={24}>
+						<img
+							src={opt2}
+							style={{
+								objectFit: "cover",
+								width: window.innerWidth > 900 ? 55 : "100%",
+								height: 55,
+								borderRadius: 6,
+							}}
+							alt="option one"
+						/>
+					</Col>
+
+					<Col lg={20} md={16}>
+						<span
+							style={{
+								fontSize: 15,
+								color: "#464a57",
+								paddingLeft: window.innerWidth > 900 ? 10 : 0,
+								textAlign: window.innerWidth > 900 ? "left" : "center",
+							}}
+						>
+							emlen Intro - Digitaler Deal Raum
+						</span>
+					</Col>
+				</Row>
+				<Row
 					style={{
-						flexDirection: "row",
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "flex-start",
-						border: props.activeItem === 2 ? "1px solid #ea4785" : 0,
+						border: props.activeItem === 2 ? "1px solid #ea4785" : 2,
 						borderRadius: 12,
 						padding: 5,
 						marginTop: 5,
@@ -661,26 +865,34 @@ export function SideBar(props) {
 					}}
 					className="box"
 				>
-					<img
-						src={opt3}
-						style={{
-							objectFit: "cover",
-							width: 55,
-							height: 55,
-							borderRadius: 6,
-						}}
-						alt="option Three"
-					/>
-					<span style={{ fontSize: 15, color: "#464a57", paddingLeft: 10 }}>
-						emlen - Rethinking Buyer Enablement
-					</span>
-				</div>
-				<div
+					<Col lg={4} md={8} sm={24} xs={24}>
+						<img
+							src={opt3}
+							style={{
+								objectFit: "cover",
+								width: window.innerWidth > 900 ? 55 : "100%",
+								height: 55,
+								borderRadius: 6,
+							}}
+							alt="option one"
+						/>
+					</Col>
+
+					<Col lg={20} md={16}>
+						<span
+							style={{
+								fontSize: 15,
+								color: "#464a57",
+								paddingLeft: window.innerWidth > 900 ? 10 : 0,
+								textAlign: window.innerWidth > 900 ? "left" : "center",
+							}}
+						>
+							emlen - Rethinking Buyer Enablement
+						</span>
+					</Col>
+				</Row>
+				<Row
 					style={{
-						flexDirection: "row",
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "flex-start",
 						border: props.activeItem === 3 ? "1px solid #ea4785" : 0,
 						borderRadius: 12,
 						padding: 5,
@@ -692,51 +904,73 @@ export function SideBar(props) {
 					}}
 					className="box"
 				>
-					<img
-						src={opt4}
-						style={{
-							objectFit: "cover",
-							width: 55,
-							height: 55,
-							borderRadius: 6,
-						}}
-						alt="option Four"
-					/>
-					<span style={{ fontSize: 15, color: "#464a57", paddingLeft: 10 }}>
-						Case study CANDIS - Ganzheitliche Experience für Vertriebsunterlagen
-					</span>
-				</div>
-				<div
+					<Col lg={4} md={8} sm={24} xs={24}>
+						<img
+							src={opt4}
+							style={{
+								objectFit: "cover",
+								width: window.innerWidth > 900 ? 55 : "100%",
+								height: 55,
+								borderRadius: 6,
+							}}
+							alt="option one"
+						/>
+					</Col>
+
+					<Col lg={20} md={16}>
+						<span
+							style={{
+								fontSize: 15,
+								color: "#464a57",
+								paddingLeft: window.innerWidth > 900 ? 10 : 0,
+								textAlign: window.innerWidth > 900 ? "left" : "center",
+							}}
+						>
+							Case study CANDIS - Ganzheitliche Experience für
+							Vertriebsunterlagen
+						</span>
+					</Col>
+				</Row>
+				<Row
 					style={{
-						flexDirection: "row",
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "flex-start",
 						border: props.activeItem === 4 ? "1px solid #ea4785" : 0,
 						borderRadius: 12,
 						padding: 5,
 						marginTop: 5,
 						marginBottom: 5,
 					}}
-					className="box"
 					onClick={() => {
 						props.setActiveItem(4);
 					}}
+					className="box"
 				>
-					<img
-						src={opt4}
-						style={{
-							objectFit: "cover",
-							width: 55,
-							height: 55,
-							borderRadius: 6,
-						}}
-						alt="option Five"
-					/>
-					<span style={{ fontSize: 15, color: "#464a57", paddingLeft: 10 }}>
-						Termin mit Marc vereinbarens
-					</span>
-				</div>
+					<Col lg={4} md={8} sm={24} xs={24}>
+						<img
+							src={opt4}
+							style={{
+								objectFit: "cover",
+								width: window.innerWidth > 900 ? 55 : "100%",
+								height: 55,
+								borderRadius: 6,
+							}}
+							alt="option one"
+						/>
+					</Col>
+
+					<Col lg={20} md={16}>
+						<span
+							style={{
+								fontSize: 15,
+								color: "#464a57",
+								paddingLeft: window.innerWidth > 900 ? 10 : 0,
+								textAlign: window.innerWidth > 900 ? "left" : "center",
+							}}
+						>
+							{" "}
+							Termin mit Marc vereinbarens
+						</span>
+					</Col>
+				</Row>
 			</div>
 		</div>
 	);
@@ -949,72 +1183,73 @@ export function FifthComponent() {
 		};
 	});
 	return (
-		<div
+		<Row
 			style={{
 				height: "100%",
 				width: "100%",
 				minHeight: "100vh",
 				//	backgroundColor: "#f0f4fa",
 				backgroundColor: "#f1f4f9",
-				display: "flex",
-				alignItems: "center",
 				paddingTop: 120,
 				paddingLeft: 50,
 				paddingRight: 50,
 				paddingBottom: 50,
-				justifyContent: "space-between",
 			}}
 		>
-			<span style={{ fontSize: 44, fontWeight: "bold", color: "#010c42" }}>
-				Buche hier einen Termin mit einem Experten:
-			</span>
-			<div
-				style={{
-					backgroundColor: "#010c42",
-					width: "100%",
-					maxWidth: 600,
-					//borderRadius: 10,
-					display: "flex",
-					flexDirection: "column",
-					alignItems: "center",
-					justifyContent: "center",
-					paddingTop: 30,
-					paddingBottom: 30,
-					paddingRight: 10,
-					paddingLeft: 10,
-				}}
-			>
-				<img
-					src={profile}
+			<Col lg={12} md={12} sm={24} xs={24} style={{ paddingBottom: 20 }}>
+				<span style={{ fontSize: 44, fontWeight: "bold", color: "#010c42" }}>
+					Buche hier einen Termin mit einem Experten:
+				</span>
+			</Col>
+			<Col lg={12} md={12} sm={24} xs={24} style={{ paddingBottom: 20 }}>
+				<div
 					style={{
-						width: 75,
-						height: 75,
-						borderRadius: 75 / 2,
-						paddingRight: 5,
-						objectFit: "cover",
-						border: "3px solid #fff",
-					}}
-					alt="profile cover"
-				/>
-				<span
-					style={{
-						textAlign: "center",
-						color: "#fff",
-						fontSize: 28,
-						paddingTop: 10,
-						paddingBottom: 10,
+						backgroundColor: "#010c42",
+						width: "100%",
+						maxWidth: 600,
+						//borderRadius: 10,
+						display: "flex",
+						flexDirection: "column",
+						alignItems: "center",
+						justifyContent: "center",
+						paddingTop: 30,
+						paddingBottom: 30,
+						paddingRight: 10,
+						paddingLeft: 10,
 					}}
 				>
-					emlen Discovery & Demo Meeting w/ Marc Grewenig (Co-Founder)
-				</span>
-				<ScheduleMeeting
-					borderRadius={10}
-					primaryColor="#3f5b85"
-					eventDurationInMinutes={30}
-					availableTimeslots={availableTimeslots}
-					onStartTimeSelect={console.log}
-				/>
-			</div>
-		</div>
+					<img
+						src={profile}
+						style={{
+							width: 75,
+							height: 75,
+							borderRadius: 75 / 2,
+							paddingRight: 5,
+							objectFit: "cover",
+							border: "3px solid #fff",
+						}}
+						alt="profile cover"
+					/>
+					<span
+						style={{
+							textAlign: "center",
+							color: "#fff",
+							fontSize: 28,
+							paddingTop: 10,
+							paddingBottom: 10,
+						}}
+					>
+						emlen Discovery & Demo Meeting w/ Marc Grewenig (Co-Founder)
+					</span>
+					<ScheduleMeeting
+						borderRadius={10}
+						primaryColor="#3f5b85"
+						eventDurationInMinutes={30}
+						availableTimeslots={availableTimeslots}
+						onStartTimeSelect={console.log}
+					/>
+				</div>
+			</Col>
+		</Row>
 	);
 }
